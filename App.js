@@ -1,9 +1,10 @@
 import React from 'react';
-import Home from './screens/Home';
+import TabNavigator from './navigation/TabNavigator';
+
 export default class App extends React.Component {
   render() {
     return (
-       <Home/>
+       <TabNavigator/>
     );
   }
 }
