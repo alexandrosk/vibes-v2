@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text, View, Button} from 'react-native';
 import styles from '../styles';
-
+import { StatusBar } from 'react-native';
 export default class Home extends React.Component {
     state = {
         count: 10
@@ -21,7 +21,8 @@ export default class Home extends React.Component {
     render() {
         return (
             <View style={styles.container}>
-                <Text>How many apps are we going to build? {this.state.count}</Text>
+                <StatusBar backgroundColor="blue" barStyle="light-content" />
+                <Text style={styles.text}>How many apps are we going to build? {this.state.count}</Text>
                 <Button title="Add" onPress={() => this.add()}/>
                 <Button title="Remove" onPress={() => this.minus()}/>
             </View>
