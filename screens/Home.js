@@ -2,7 +2,9 @@ import React from 'react';
 import { Text, View, Button} from 'react-native';
 import styles from '../styles';
 import { StatusBar } from 'react-native';
-export default class Home extends React.Component {
+import { connect } from 'react-redux';
+
+class Home extends React.Component {
     state = {
         count: 10
     };
@@ -29,4 +31,9 @@ export default class Home extends React.Component {
         );
     }
 }
-
+const mapStateToProps = (state) => {
+    return {
+        counter : state.counter
+    }
+};
+export default connect(mapStateToProps)(Home)
