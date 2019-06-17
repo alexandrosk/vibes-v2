@@ -4,7 +4,9 @@ export default styles = StyleSheet.create({
     container: {
         flex: 1,
         //backgroundColor: '#2c2c2e',
-        backgroundColor: '#282828',
+        //backgroundColor: '#19191a',
+        backgroundColor: '#15191c',
+        //backgroundColor: '#030303',
         alignItems: 'center',
         justifyContent: 'center',
     },

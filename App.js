@@ -1,15 +1,23 @@
 import React from 'react';
-import TabNavigator from './navigation/TabNavigator';
-import { createStore } from 'redux';
+import SwitchNavigator from './navigation/SwitchNavigator';
+import {applyMiddleware, createStore} from 'redux';
 import { Provider } from 'react-redux';
 import reducer from './reducers'
-const store = createStore(reducer);
+
+import thunkMiddleware from 'redux-thunk';
+import styles from "./styles";
+import {StatusBar, View} from "react-native";
+const middleware = applyMiddleware(thunkMiddleware);
+
+const store = createStore(reducer, middleware);
+
 
 export default class App extends React.Component {
   render() {
     return (
         <Provider store={store}>
-          <TabNavigator/>
+            <StatusBar barStyle="light-content" />
+            <SwitchNavigator/>
         </Provider>
     );
   }

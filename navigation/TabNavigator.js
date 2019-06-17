@@ -1,6 +1,5 @@
 import React from 'react';
-import { Text, View } from 'react-native';
-import {AntDesign} from '@expo/vector-icons';
+import { Text } from 'react-native';
 import Home from '../screens/Home';
 import Search from '../screens/Search';
 import Upload from '../screens/Upload';
