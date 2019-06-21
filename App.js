@@ -5,9 +5,10 @@ import { Provider } from 'react-redux';
 import reducer from './reducers'
 
 import thunkMiddleware from 'redux-thunk';
+import {logger} from "redux-logger";
 import styles from "./styles";
 import {StatusBar, View} from "react-native";
-const middleware = applyMiddleware(thunkMiddleware);
+const middleware = applyMiddleware(thunkMiddleware, logger);
 
 const store = createStore(reducer, middleware);
 
