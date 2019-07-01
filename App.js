@@ -6,8 +6,9 @@ import reducer from './reducers'
 
 import thunkMiddleware from 'redux-thunk';
 import {logger} from "redux-logger";
-import styles from "./styles";
+//import styles from "./styles";
 import {StatusBar, View} from "react-native";
+import firebase from './config/firebase'
 const middleware = applyMiddleware(thunkMiddleware, logger);
 
 const store = createStore(reducer, middleware);

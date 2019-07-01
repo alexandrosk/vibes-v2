@@ -1,15 +1,17 @@
 import React from 'react';
 import { Text, View, TextInput, TouchableOpacity } from 'react-native';
 import styles from '../../styles';
-import {updateEmail, updatePassword} from "../../actions/user";
+import {updateEmail, updatePassword,login} from "../../actions/user";
 import {connect} from "react-redux";
 import { bindActionCreators } from 'redux';
-
+import firebase from 'firebase';
 
 class Login extends React.Component {
     login = () => {
         if (this.props.user.email) {
-            this.props.navigation.navigate('Home')
+
+            this.props.login();
+            //this.props.navigation.navigate('Home');
         }
     };
     render() {
@@ -42,7 +44,8 @@ class Login extends React.Component {
 const mapDispatchToProps = (dispatch) => {
     return bindActionCreators({
         updateEmail,
-        updatePassword
+        updatePassword,
+        login
     }, dispatch)
 };
 
