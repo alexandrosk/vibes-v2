@@ -1,19 +1,18 @@
 import React from 'react';
-import { Text, View, TextInput, TouchableOpacity } from 'react-native';
+import {Text, View, TextInput, TouchableOpacity} from 'react-native';
 import styles from '../../styles';
-import {updateEmail, updatePassword,login} from "../../actions/user";
+import {updateEmail, updatePassword, login} from "../../actions/user";
 import {connect} from "react-redux";
-import { bindActionCreators } from 'redux';
-import firebase from 'firebase';
+import {bindActionCreators} from 'redux';
 
 class Login extends React.Component {
     login = () => {
         if (this.props.user.email) {
-
             this.props.login();
-            //this.props.navigation.navigate('Home');
+            this.props.navigation.navigate('Home');
         }
     };
+
     render() {
         return (
             <View style={styles.container}>
@@ -33,9 +32,9 @@ class Login extends React.Component {
                 <Text style={styles.text}>
                     OR
                 </Text>
-               <TouchableOpacity onPress={() => this.props.navigation.navigate('SignUp')}>
-                   <Text style={styles.text}>SIGN UP</Text>
-               </TouchableOpacity>
+                <TouchableOpacity onPress={() => this.props.navigation.navigate('SignUp')}>
+                    <Text style={styles.text}>SIGN UP</Text>
+                </TouchableOpacity>
             </View>
         );
     }
@@ -51,7 +50,7 @@ const mapDispatchToProps = (dispatch) => {
 
 const mapStateToProps = (state) => {
     return {
-        user : state.user
+        user: state.user
     }
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Login)

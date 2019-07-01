@@ -2,11 +2,15 @@ import React from 'react';
 import {Text, View, TextInput, TouchableOpacity} from 'react-native';
 import styles from '../../styles';
 
-import {updateEmail, updatePassword, updateUsername, updateBio} from "../../actions/user";
+import {updateEmail, updatePassword, updateUsername, updateBio, signUp} from "../../actions/user";
 import {connect} from "react-redux";
 import { bindActionCreators } from 'redux';
 
 class SignUp extends React.Component {
+    signUp = () => {
+        this.props.signUp();
+        this.props.navigation.navigate('home');
+    };
 
     render() {
         return (
@@ -34,7 +38,7 @@ class SignUp extends React.Component {
                            secureTextEntry={true}
                            onChangeText={input => this.props.updateBio(input)}
                            placeholder='Bio'/>
-                <TouchableOpacity style={styles.button} onPress={() => console.log(this.props.user)}>
+                <TouchableOpacity style={styles.button} onPress={() => this.signUp()}>
                     <Text style={styles.text}>SIGN UP</Text>
                 </TouchableOpacity>
             </View>
@@ -48,6 +52,7 @@ const mapDispatchToProps = (dispatch) => {
         updatePassword,
         updateUsername,
         updateBio,
+        signUp
     }, dispatch)
 };
 
