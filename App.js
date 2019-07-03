@@ -9,7 +9,8 @@ import {logger} from "redux-logger";
 //import styles from "./styles";
 import {StatusBar, View} from "react-native";
 import firebase from './config/firebase'
-const middleware = applyMiddleware(thunkMiddleware, logger);
+//const middleware = applyMiddleware(thunkMiddleware, logger);
+const middleware = applyMiddleware(thunkMiddleware);
 
 const store = createStore(reducer, middleware);
 

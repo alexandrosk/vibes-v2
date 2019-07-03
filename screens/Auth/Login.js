@@ -1,7 +1,7 @@
 import React from 'react';
 import {Text, View, TextInput, TouchableOpacity} from 'react-native';
 import styles from '../../styles';
-import {updateEmail, updatePassword, login} from "../../actions/user";
+import {updateEmail, updatePassword, login, facebookLogin} from "../../actions/user";
 import {connect} from "react-redux";
 import {bindActionCreators} from 'redux';
 import firebase from 'firebase';
@@ -37,6 +37,9 @@ class Login extends React.Component {
                 <TouchableOpacity style={styles.button} onPress={() => this.login()}>
                     <Text style={styles.text}>LOG IN</Text>
                 </TouchableOpacity>
+                <TouchableOpacity style={styles.button} onPress={() => this.props.facebookLogin()}>
+                    <Text style={styles.text}>FACEBOOK LOGIN</Text>
+                </TouchableOpacity>
                 <Text style={styles.text}>
                     OR
                 </Text>
@@ -52,7 +55,8 @@ const mapDispatchToProps = (dispatch) => {
     return bindActionCreators({
         updateEmail,
         updatePassword,
-        login
+        login,
+        facebookLogin
     }, dispatch)
 };
 
