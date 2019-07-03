@@ -2,6 +2,7 @@ import React from 'react';
 import {Text, View} from 'react-native';
 import styles from '../styles';
 import {connect} from "react-redux";
+import {getUser} from "../actions/user";
 import {bindActionCreators} from 'redux';
 import firebase from 'firebase';
 
@@ -9,7 +10,10 @@ class Splash extends React.Component {
     componentDidMount = () => {
         firebase.auth().onAuthStateChanged((user) => {
             if (user) {
-                this.props.navigation.navigate('Home');
+                this.props.getUser(user.uid);
+                if (this.props.user){
+                    this.props.navigation.navigate('Home');
+                }
             } else {
                 this.props.navigation.navigate('Login');
             }
@@ -33,6 +37,7 @@ class Splash extends React.Component {
 
 const mapDispatchToProps = (dispatch) => {
     return bindActionCreators({
+        getUser,
     }, dispatch)
 };
 

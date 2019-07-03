@@ -18,7 +18,8 @@ export const login = () => {
         try {
             const {email, password} = getState().user;
             const response = await firebase.auth().signInWithEmailAndPassword(email, password);
-            dispatch({type: 'LOGIN', payload: response.user})
+            dispatch(getUser(response.user.uid));
+            //dispatch({type: 'LOGIN', payload: response.user})
             //xriazete to async gia to await
         } catch (e) {
             alert(e);
@@ -26,12 +27,11 @@ export const login = () => {
     }
 };
 
-export const getUser = (email, password) => {
+export const getUser = (uid) => {
     return async (dispatch, getState) => {
         try {
-            const {email, password} = getState().user;
-            const response = await firebase.auth().signInWithEmailAndPassword(email, password);
-            dispatch({type: 'LOGIN', payload: response.user})
+            const user = await db.collection('users').doc(uid).get();
+            dispatch({type: 'LOGIN', payload: user.data()})
             //xriazete to async gia to await
         } catch (e) {
             alert(e);
@@ -43,22 +43,21 @@ export const signUp = () => {
     return async (dispatch, getState) => {
         try {
             const {email, password, username, bio} = getState().user;
-            const response = await firebase.auth().createUserWithEmailAndPassword(email, password);
-
-            //xriazete to async gia to await
-            if (response.user.uid){
-                const user = {
-                    uid: response.user.uid,
-                    email: email,
-                    username: username,
-                    bio: bio,
-                    photo: '',
-                    token: null
-                };
-                db.collection('users').doc(response.user.uid).set(user);
-                dispatch({type: 'SIGNUP', payload: user});
-            }
-
+            firebase.auth().createUserWithEmailAndPassword(email, password).then((response) => {
+                //xriazete to async gia to await
+                if (response.user.uid){
+                    const user = {
+                        uid: response.user.uid,
+                        email: email,
+                        username: username,
+                        bio: bio,
+                        photo: '',
+                        token: null
+                    };
+                    db.collection('users').doc(response.user.uid).set(user);
+                    dispatch({type: 'LOGIN', payload: user});
+                }
+            });
         } catch (e) {
             alert(e);
         }

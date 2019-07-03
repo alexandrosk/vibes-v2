@@ -45,6 +45,7 @@ class SignUp extends React.Component {
 }
 
 const mapDispatchToProps = (dispatch) => {
+
     return bindActionCreators({
         updateEmail,
         updatePassword,
