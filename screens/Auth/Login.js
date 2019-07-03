@@ -4,12 +4,20 @@ import styles from '../../styles';
 import {updateEmail, updatePassword, login} from "../../actions/user";
 import {connect} from "react-redux";
 import {bindActionCreators} from 'redux';
+import firebase from 'firebase';
 
 class Login extends React.Component {
+    componentDidMount = () => {
+        firebase.auth().onAuthStateChanged((user) => {
+            if (user){
+                this.props.navigation.navigate('Home');
+            }
+        })
+    };
+
     login = () => {
         if (this.props.user.email) {
             this.props.login();
-            this.props.navigation.navigate('Home');
         }
     };
 

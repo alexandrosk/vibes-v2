@@ -1,6 +1,7 @@
 import React from 'react';
 import TabNavigator from './TabNavigator';
 import AuthNavigator from './AuthNavigator';
+import SplashScreen from "../screens/Splash";
 
 import {createSwitchNavigator, createAppContainer} from 'react-navigation';
 
@@ -11,10 +12,13 @@ const SwitchNavigator = createSwitchNavigator({
         },
         Auth: {
             screen: AuthNavigator
+        },
+        Splash: {
+            screen: SplashScreen
         }
     },
     {
-        initialRouteName: 'Auth'
+        initialRouteName: 'Splash'
     }
 );
 

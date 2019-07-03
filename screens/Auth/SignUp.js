@@ -29,13 +29,11 @@ class SignUp extends React.Component {
                 <TextInput placeholderTextColor="#D7DEDC"
                            value={this.props.user.username}
                            style={styles.textInput}
-                           secureTextEntry={true}
                            onChangeText={input => this.props.updateUsername(input)}
                            placeholder='Username (unique)'/>
                 <TextInput placeholderTextColor="#D7DEDC"
                            value={this.props.user.bio}
                            style={styles.textInput}
-                           secureTextEntry={true}
                            onChangeText={input => this.props.updateBio(input)}
                            placeholder='Bio'/>
                 <TouchableOpacity style={styles.button} onPress={() => this.signUp()}>
