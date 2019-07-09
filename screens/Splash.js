@@ -1,10 +1,11 @@
 import React from 'react';
-import {Text, View} from 'react-native';
+import {StatusBar, Text, View} from 'react-native';
 import styles from '../styles';
 import {connect} from "react-redux";
 import {getUser} from "../actions/user";
 import {bindActionCreators} from 'redux';
 import firebase from 'firebase';
+
 
 class Splash extends React.Component {
     componentDidMount = () => {
@@ -29,6 +30,7 @@ class Splash extends React.Component {
     render() {
         return (
             <View style={styles.container}>
+                <StatusBar backgroundColor="blue" barStyle="light-content" />
                 <Text style={styles.text}>Loading</Text>
             </View>
         );

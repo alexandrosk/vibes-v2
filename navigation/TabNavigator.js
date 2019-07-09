@@ -2,7 +2,7 @@ import React from 'react';
 import {Text} from 'react-native';
 import Home from '../screens/Home';
 import Search from '../screens/Search';
-import Upload from '../screens/Upload';
+import Post from '../screens/Post';
 import Activity from '../screens/Activity';
 import Profile from '../screens/Profile';
 import style from '../styles';
@@ -29,8 +29,8 @@ const TabNavigator = createBottomTabNavigator({
                 )
             }
         },
-        Upload: {
-            screen: Upload,
+        Post: {
+            screen: Post,
             navigationOptions: {
                 tabBarLabel: 'New post',
                 tabBarIcon: () => (

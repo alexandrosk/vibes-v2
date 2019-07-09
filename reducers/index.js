@@ -9,7 +9,7 @@ const counter = (state = 115, action) => {
         default:
             return state
     }
-}
+};
 
 const user = (state = {}, action) => {
     switch (action.type) {
@@ -26,10 +26,22 @@ const user = (state = {}, action) => {
         default:
             return state
     }
-}
+};
+
+const post = (state = null, action) => {
+    switch (action.type) {
+        case 'UPDATE_DESCRIPTION':
+            return {...state, description: action.payload};
+        case 'GET_POSTS':
+            return {...state, feed: action.payload};
+        default:
+            return state
+    }
+};
 
 const rootReducer = combineReducers({
     counter,
-    user
+    user,
+    post
 });
 export default rootReducer;

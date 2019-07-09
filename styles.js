@@ -1,4 +1,5 @@
-import {StyleSheet} from "react-native";
+import {StyleSheet, Dimensions} from "react-native";
+
 
 export default styles = StyleSheet.create({
     container: {
@@ -40,5 +41,10 @@ export default styles = StyleSheet.create({
         borderWidth: 1,
         borderRadius: 3,
         width: '50%',
+        flex: 1
+    },
+    postPhoto: {
+        width: 250,
+        height: 250,
     }
 });
