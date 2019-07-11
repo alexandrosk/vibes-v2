@@ -23,7 +23,9 @@ const TabNavigator = createBottomTabNavigator({
             navigationOptions: {
                 tabBarLabel: ' ',
                 tabBarIcon: ({focused}) => (
-                    <CityScapeIcon/>
+                    focused ?
+                        <CityScapeIcon/> :
+                    <CityScapeIcon style={{opacity:0.8}}/>
                 )
             }
         },
@@ -31,8 +33,9 @@ const TabNavigator = createBottomTabNavigator({
             screen: Search,
             navigationOptions: {
                 tabBarLabel: ' ',
-                tabBarIcon: () => (
-                    <SearchIcon/>
+                tabBarIcon: ({focused}) => (
+                    focused ? <SearchIcon/> :
+                    <SearchIcon style={{opacity:0.8}}/>
                 )
             }
         },
@@ -40,8 +43,9 @@ const TabNavigator = createBottomTabNavigator({
             screen: Post,
             navigationOptions: {
                 tabBarLabel: ' ',
-                tabBarIcon: () => (
-                    <PlusIcon/>
+                tabBarIcon: ({focused}) => (
+                    focused ? <PlusIcon/> :
+                    <PlusIcon style={{opacity:0.8}}/>
                 ),
             }
         },
@@ -49,8 +53,9 @@ const TabNavigator = createBottomTabNavigator({
             screen: Activity,
             navigationOptions: {
                 tabBarLabel: ' ',
-                tabBarIcon: () => (
-                    <HeartIcon/>
+                tabBarIcon: ({focused}) => (
+                    focused ? <HeartIcon/> :
+                    <HeartIcon style={{opacity:0.8}}/>
                 )
             }
         },
@@ -58,10 +63,11 @@ const TabNavigator = createBottomTabNavigator({
             screen: Profile,
             navigationOptions: {
                 tabBarLabel: ' ',
-                tabBarIcon: () => (
-                    <UserIcon/>
+                tabBarIcon: ({focused}) => (
+                    focused ? <UserIcon/> :
+                    <UserIcon style={{opacity:0.8}}/>
                 )
-            }
+            },
         }
     },
     {
