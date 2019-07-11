@@ -1,11 +1,18 @@
 import React from 'react';
 import {Text} from 'react-native';
+import {AntDesign} from '@expo/vector-icons';
 import Home from '../screens/Home';
 import Search from '../screens/Search';
 import Post from '../screens/Post';
 import Activity from '../screens/Activity';
 import Profile from '../screens/Profile';
 import style from '../styles';
+
+import SearchIcon from '../icons/search'
+import HeartIcon from '../icons/heart'
+import UserIcon from '../icons/user'
+import CityScapeIcon from '../icons/cityscape'
+import PlusIcon from '../icons/plus'
 
 import {createBottomTabNavigator, createAppContainer} from 'react-navigation';
 
@@ -14,45 +21,45 @@ const TabNavigator = createBottomTabNavigator({
         Home: {
             screen: Home,
             navigationOptions: {
-                tabBarLabel: 'Feed',
+                tabBarLabel: ' ',
                 tabBarIcon: ({focused}) => (
-                    <Text style={{fontSize: 20}}>🌃</Text>
+                    <CityScapeIcon/>
                 )
             }
         },
         Search: {
             screen: Search,
             navigationOptions: {
-                tabBarLabel: 'Search',
+                tabBarLabel: ' ',
                 tabBarIcon: () => (
-                    <Text style={{fontSize: 20}}>🔍</Text>
+                    <SearchIcon/>
                 )
             }
         },
         Post: {
             screen: Post,
             navigationOptions: {
-                tabBarLabel: 'New post',
+                tabBarLabel: ' ',
                 tabBarIcon: () => (
-                    <Text style={{fontSize: 20}}>🖊️</Text>
-                )
+                    <PlusIcon/>
+                ),
             }
         },
         Activity: {
             screen: Activity,
             navigationOptions: {
-                tabBarLabel: 'Activity',
+                tabBarLabel: ' ',
                 tabBarIcon: () => (
-                    <Text style={{fontSize: 20}}>🌱</Text>
+                    <HeartIcon/>
                 )
             }
         },
         Profile: {
             screen: Profile,
             navigationOptions: {
-                tabBarLabel: 'Profile',
+                tabBarLabel: ' ',
                 tabBarIcon: () => (
-                    <Text style={{fontSize: 20}}>👤</Text>
+                    <UserIcon/>
                 )
             }
         }
@@ -60,7 +67,8 @@ const TabNavigator = createBottomTabNavigator({
     {
         defaultNavigationOptions: {
             tabBarOptions: {
-                style: style.tabBarStyling
+                style: style.tabBarStyling,
+                showLabel: false,
             },
             headerTintColor: '#D7DEDC',
         },

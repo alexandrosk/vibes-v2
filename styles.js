@@ -33,6 +33,10 @@ export default styles = StyleSheet.create({
     tabBarStyling: {
         backgroundColor: '#1c1c1e',
     },
+    tabBarIcons: {
+        color: '#ccc',
+        fontSize: 16,
+    },
     button: {
         marginTop: 20,
         paddingVertical: 10,
