@@ -1,5 +1,7 @@
 import React from 'react';
-import {Text, View, TextInput, TouchableOpacity} from 'react-native';
+import { KeyboardAvoidingView} from 'react-native';
+import { Button, Block, Input, Text } from '../../components';
+import {theme} from '../../constants';
 import styles from '../../styles';
 
 import {updateEmail, updatePassword, updateUsername, updateBio, signUp} from "../../actions/user";
@@ -7,39 +9,63 @@ import {connect} from "react-redux";
 import { bindActionCreators } from 'redux';
 
 class SignUp extends React.Component {
+    state = {
+        email: null,
+        username: null,
+        password: null,
+        errors: [],
+        loading: false,
+    };
+
     signUp = () => {
         this.props.signUp();
         this.props.navigation.navigate('home');
     };
 
     render() {
+        const { loading, errors } = this.state;
+        const hasErrors = key => errors.includes(key) ? styles.hasErrors : null;
         return (
-            <View style={styles.container}>
-                <TextInput placeholderTextColor="#D7DEDC"
-                           value={this.props.user.email}
-                           style={styles.textInput}
-                           onChangeText={input => this.props.updateEmail(input)}
-                           placeholder='Email'/>
-                <TextInput placeholderTextColor="#D7DEDC"
-                           value={this.props.user.password}
-                           style={styles.textInput}
-                           secureTextEntry={true}
-                           onChangeText={input => this.props.updatePassword(input)}
-                           placeholder='Password'/>
-                <TextInput placeholderTextColor="#D7DEDC"
-                           value={this.props.user.username}
-                           style={styles.textInput}
-                           onChangeText={input => this.props.updateUsername(input)}
-                           placeholder='Username (unique)'/>
-                <TextInput placeholderTextColor="#D7DEDC"
-                           value={this.props.user.bio}
-                           style={styles.textInput}
-                           onChangeText={input => this.props.updateBio(input)}
-                           placeholder='Bio'/>
-                <TouchableOpacity style={styles.button} onPress={() => this.signUp()}>
-                    <Text style={styles.text}>SIGN UP</Text>
-                </TouchableOpacity>
-            </View>
+            <KeyboardAvoidingView style={styles.login} behavior="padding">
+                <Block padding={[0, theme.sizes.base * 2]}>
+                    <Text h1 bold>Sign Up</Text>
+                    <Block middle>
+                        <Input
+                            email
+                            label="Email"
+                            style={[styles.input, hasErrors('email')]}
+                            value={this.props.user.email}
+                            onChangeText={input => this.props.updateEmail(input)}
+                        />
+                        <Input
+                            label="Username"
+                            style={[styles.input, hasErrors('username')]}
+                            value={this.props.user.email}
+                            onChangeText={input => this.props.updateEmail(input)}
+                        />
+                        <Input
+                            secure
+                            label="Password"
+                            error={hasErrors('password')}
+                            style={[styles.input, hasErrors('password')]}
+                            value={this.props.user.password}
+                            onChangeText={input => this.props.updatePassword(input)}
+                        />
+                        <Input
+                            label="Bio"
+                            style={[styles.input, hasErrors('bio')]}
+                            value={this.props.user.bio}
+                            onChangeText={input => this.props.updateBio(input)}
+                        />
+                        <Button gradient onPress={() => this.signUp()}>
+                            {loading ?
+                                <ActivityIndicator size="small" color="white" /> :
+                                <Text bold white center>SIGN UP</Text>
+                            }
+                        </Button>
+                    </Block>
+                </Block>
+            </KeyboardAvoidingView>
         );
     }
 }

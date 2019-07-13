@@ -4,6 +4,8 @@ import {applyMiddleware, createStore} from 'redux';
 import { Provider } from 'react-redux';
 import reducer from './reducers'
 
+import { Block } from './components';
+
 import thunkMiddleware from 'redux-thunk';
 import {logger} from "redux-logger";
 //import styles from "./styles";
@@ -20,7 +22,9 @@ export default class App extends React.Component {
     return (
         <Provider store={store}>
             <StatusBar barStyle="light-content" />
-            <SwitchNavigator/>
+            <Block color={"black"}>
+                <SwitchNavigator/>
+            </Block>
         </Provider>
     );
   }
