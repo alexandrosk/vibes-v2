@@ -4,10 +4,14 @@ import { Button, Block, Input, Text } from '../../components';
 import {theme} from '../../constants';
 import styles from '../../styles';
 
+import { FontAwesome } from '@expo/vector-icons';
+import UniverseIcon from '../../icons/universe';
+
 import {updateEmail, updatePassword, login, facebookLogin} from "../../actions/user";
 import {connect} from "react-redux";
 import {bindActionCreators} from 'redux';
 import firebase from 'firebase';
+
 
 
 class Login extends React.Component {
@@ -29,7 +33,7 @@ class Login extends React.Component {
         return (
         <KeyboardAvoidingView style={styles.login} behavior="padding">
             <Block padding={[0, theme.sizes.base * 2]}>
-                <Text h1 bold>Login</Text>
+                <Text h1 bold>Login to the <UniverseIcon/></Text>
                 <Block middle>
                     <Input
                         label="Email"
@@ -48,19 +52,17 @@ class Login extends React.Component {
                         <Text bold white center>LOG IN</Text>
                     </Button>
                     <Block middle flex={0.5} >
-                        <Button color={'#3b5998'} onPress={() => this.props.facebookLogin()}>
-                            <Text white center>
-                                LOGIN WITH FACEBOOK
-                            </Text>
-                        </Button>
-                        <Text style={styles.orButton}>
-                            OR
-                        </Text>
                         <Button shadow onPress={() => this.props.navigation.navigate('SignUp')}>
                             <Text black bold center>
                                 SIGN UP
                             </Text>
                         </Button>
+                        <Text style={styles.orButton}>
+                            OR
+                        </Text>
+                        <FontAwesome.Button style={styles.facebookButton} name="facebook" backgroundColor="#4267b2" onPress={() => this.props.facebookLogin()}>
+                            Continue with Facebook
+                        </FontAwesome.Button>
                     </Block>
                 </Block>
             </Block>

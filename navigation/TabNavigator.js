@@ -1,12 +1,12 @@
 import React from 'react';
-import {Text} from 'react-native';
-import {AntDesign} from '@expo/vector-icons';
 import Home from '../screens/Home';
 import Search from '../screens/Search';
 import Post from '../screens/Post';
 import Activity from '../screens/Activity';
 import Profile from '../screens/Profile';
 import style from '../styles';
+
+import {HomeNavigator, SearchNavigator} from './StackNavigator';
 
 import SearchIcon from '../icons/search'
 import HeartIcon from '../icons/heart'
@@ -19,7 +19,7 @@ import {createBottomTabNavigator, createAppContainer} from 'react-navigation';
 
 const TabNavigator = createBottomTabNavigator({
         Home: {
-            screen: Home,
+            screen: HomeNavigator,
             navigationOptions: {
                 tabBarLabel: ' ',
                 tabBarIcon: ({focused}) => (
@@ -30,7 +30,7 @@ const TabNavigator = createBottomTabNavigator({
             }
         },
         Search: {
-            screen: Search,
+            screen: SearchNavigator,
             navigationOptions: {
                 tabBarLabel: ' ',
                 tabBarIcon: ({focused}) => (
@@ -63,6 +63,7 @@ const TabNavigator = createBottomTabNavigator({
             screen: Profile,
             navigationOptions: {
                 tabBarLabel: ' ',
+                title: 'Profile',
                 tabBarIcon: ({focused}) => (
                     focused ? <UserIcon/> :
                     <UserIcon style={{opacity:0.8}}/>

@@ -3,6 +3,7 @@ import { KeyboardAvoidingView} from 'react-native';
 import { Button, Block, Input, Text } from '../../components';
 import {theme} from '../../constants';
 import styles from '../../styles';
+import UniverseIcon from '../../icons/universe';
 
 import {updateEmail, updatePassword, updateUsername, updateBio, signUp} from "../../actions/user";
 import {connect} from "react-redux";
@@ -28,7 +29,7 @@ class SignUp extends React.Component {
         return (
             <KeyboardAvoidingView style={styles.login} behavior="padding">
                 <Block padding={[0, theme.sizes.base * 2]}>
-                    <Text h1 bold>Sign Up</Text>
+                    <Text h1 bold>Sign Up to the <UniverseIcon/></Text>
                     <Block middle>
                         <Input
                             email
@@ -41,7 +42,7 @@ class SignUp extends React.Component {
                             label="Username"
                             style={[styles.input, hasErrors('username')]}
                             value={this.props.user.email}
-                            onChangeText={input => this.props.updateEmail(input)}
+                            onChangeText={input => this.props.updateUsername(input)}
                         />
                         <Input
                             secure

@@ -8,12 +8,12 @@ import { Block } from './components';
 
 import thunkMiddleware from 'redux-thunk';
 import {logger} from "redux-logger";
-//import styles from "./styles";
-import {StatusBar, View} from "react-native";
+import styles from "./styles";
+import {theme} from "./constants";
+import {StatusBar} from "react-native";
 import firebase from './config/firebase'
 //const middleware = applyMiddleware(thunkMiddleware, logger);
 const middleware = applyMiddleware(thunkMiddleware);
-
 const store = createStore(reducer, middleware);
 
 
@@ -21,7 +21,7 @@ export default class App extends React.Component {
   render() {
     return (
         <Provider store={store}>
-            <StatusBar barStyle="light-content" />
+            <StatusBar barStyle="light-content" backgroundColor={theme.colors.black} />
             <Block color={"black"}>
                 <SwitchNavigator/>
             </Block>

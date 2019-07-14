@@ -1,7 +1,7 @@
 const colors = {
     accent: "#F3534A",
-    primary: "#0AC4BA",
-    secondary: "#2BDA8E",
+    primary: "#744eaa",
+    secondary: "#553788",
     tertiary: "#FFE358",
     black: "#15191c",
     secondBlack: "#1c1c1e",
@@ -17,6 +17,9 @@ const sizes = {
     radius: 6,
     padding: 25,
 
+    //spacing
+    horizontal: 10,
+
     // font sizes
     h1: 26,
     h2: 20,
@@ -29,7 +32,8 @@ const sizes = {
 
 const fonts = {
     h1: {
-        fontSize: sizes.h1
+        fontSize: sizes.h1,
+        marginHorizontal: sizes.horizontal
     },
     h2: {
         fontSize: sizes.h2

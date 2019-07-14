@@ -1,5 +1,6 @@
 import {StyleSheet, Dimensions} from "react-native";
-import {theme} from './constants'
+import {theme} from './constants';
+//const { width, height } = Dimensions.get('window');
 
 export default styles = StyleSheet.create({
     container: {
@@ -7,6 +8,9 @@ export default styles = StyleSheet.create({
         //backgroundColor: '#19191a',
         //backgroundColor: '#030303',
         backgroundColor: '#15191c'
+    },
+    mainApp: {
+        marginTop:theme.sizes.base * 2,
     },
     //light blue #D7DEDC
     //dynato blue #19647E
@@ -17,6 +21,13 @@ export default styles = StyleSheet.create({
     text: {
         color: '#fff',
     },
+    marginHeader: {
+        marginTop: theme.sizes.base * 2,
+    },
+   /* header: {
+        height: theme.sizes.base * 4,
+        width: width - theme.sizes.base * 2,
+    },*/
     orButton: {
         color: '#fff',
         textAlign:'center',
@@ -48,6 +59,10 @@ export default styles = StyleSheet.create({
         borderRadius: 3,
         width: '50%'
     },
+    facebookButton: {
+        height: theme.sizes.base * 3,
+        justifyContent: 'center',
+    },
     postPhoto: {
         width: 250,
         height: 250,
@@ -65,5 +80,5 @@ export default styles = StyleSheet.create({
     },
     hasErrors: {
         borderBottomColor: theme.colors.accent,
-    }
+    },
 });
