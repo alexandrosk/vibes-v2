@@ -1,6 +1,5 @@
 import React from 'react';
-import Home from '../screens/Home';
-import Search from '../screens/Search';
+
 import Post from '../screens/Post';
 import Activity from '../screens/Activity';
 import Profile from '../screens/Profile';
@@ -25,7 +24,7 @@ const TabNavigator = createBottomTabNavigator({
                 tabBarIcon: ({focused}) => (
                     focused ?
                         <CityScapeIcon/> :
-                    <CityScapeIcon style={{opacity:0.8}}/>
+                    <CityScapeIcon style={{opacity:0.65}}/>
                 )
             }
         },
@@ -35,7 +34,7 @@ const TabNavigator = createBottomTabNavigator({
                 tabBarLabel: ' ',
                 tabBarIcon: ({focused}) => (
                     focused ? <SearchIcon/> :
-                    <SearchIcon style={{opacity:0.8}}/>
+                    <SearchIcon style={{opacity:0.65}}/>
                 )
             }
         },
@@ -55,7 +54,7 @@ const TabNavigator = createBottomTabNavigator({
                 tabBarLabel: ' ',
                 tabBarIcon: ({focused}) => (
                     focused ? <HeartIcon/> :
-                    <HeartIcon style={{opacity:0.8}}/>
+                    <HeartIcon style={{opacity:0.65}}/>
                 )
             }
         },
@@ -66,7 +65,7 @@ const TabNavigator = createBottomTabNavigator({
                 title: 'Profile',
                 tabBarIcon: ({focused}) => (
                     focused ? <UserIcon/> :
-                    <UserIcon style={{opacity:0.8}}/>
+                    <UserIcon style={{opacity:0.65}}/>
                 )
             },
         }

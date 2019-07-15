@@ -12,27 +12,27 @@ import Profile from '../screens/Profile';
 import {createStackNavigator, createAppContainer} from 'react-navigation';
 
 import BackIcon from '../icons/back';
+import CityIcon from '../icons/cityscape';
+let hours = new Date().getMinutes(); //Current Hours
 
 export const HomeNavigator = createStackNavigator({
 
         Home: {
             screen: HomeScreen,
             navigationOptions: {
-                title: ' ',
+                headerTitle: <CityIcon/>,
+                headerTintColor: '#fff',
             },
-            headerMode: 'none',
         },
     },
     {
         defaultNavigationOptions: {
             headerStyle: {
-                height: theme.sizes.base * 4,
                 backgroundColor: theme.colors.black,
                 borderBottomColor: "transparent",
                 elevation: 0, // for android
             },
-            headerBackImage: <BackIcon/>,
-            headerBackTitle: null,
+            headerBackImage: <BackIcon/>
         }
     }
 );
@@ -43,8 +43,18 @@ export const SearchNavigator = createStackNavigator({
         Search: {
             screen: SearchScreen,
             navigationOptions: {
-                title: ' '
-            }
-        },
+                title: 'Search'
+            },
+        }
+    },
+    {
+        defaultNavigationOptions: {
+            headerStyle: {
+                backgroundColor: theme.colors.black,
+                borderBottomColor: "transparent",
+                elevation: 0, // for android
+            },
+            headerBackImage: <BackIcon/>
+        }
     }
 );

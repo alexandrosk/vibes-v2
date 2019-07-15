@@ -81,4 +81,21 @@ export default styles = StyleSheet.create({
     hasErrors: {
         borderBottomColor: theme.colors.accent,
     },
+    avatar: {
+        position: 'absolute',
+        top: theme.sizes.base,
+        left: theme.sizes.base,
+        width: theme.sizes.base * 2,
+        height: theme.sizes.base * 2,
+        borderRadius: theme.sizes.radius,
+    },
+    shadow: {
+        shadowColor: theme.colors.black,
+        shadowOffset: {
+            width: 0,
+            height: 6,
+        },
+        shadowOpacity: 0.5,
+        shadowRadius: 5,
+    },
 });

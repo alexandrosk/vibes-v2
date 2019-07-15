@@ -23,7 +23,7 @@ export default class App extends React.Component {
         <Provider store={store}>
             <StatusBar barStyle="light-content" backgroundColor={theme.colors.black} />
             <Block color={"black"}>
-                <SwitchNavigator/>
+                <SwitchNavigator />
             </Block>
         </Provider>
     );

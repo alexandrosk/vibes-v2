@@ -6,7 +6,7 @@ export default class Search extends React.Component {
 
     render() {
         return (
-            <View style={styles.container}>
+            <View style={styles.login}>
                 <Text>Search</Text>
             </View>
         );

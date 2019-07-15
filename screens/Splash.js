@@ -29,8 +29,8 @@ class Splash extends React.Component {
 
     render() {
         return (
-            <View style={styles.container}>
-                <StatusBar backgroundColor="blue" barStyle="light-content" />
+            <View style={styles.login}>
+                <StatusBar barStyle="light-content" />
                 <Text style={styles.text}>Loading</Text>
             </View>
         );

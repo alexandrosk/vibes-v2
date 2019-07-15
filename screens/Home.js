@@ -17,31 +17,35 @@ class Home extends React.Component {
     }
 
     render() {
-        if(this.props.post === null) return null;
+        if(this.props.post === null) return (
+            <Block style={styles.login}>
+            </Block>
+        );
         return (
-                <Block style={styles.login}>
-                    <Block flex={false} row center space="between"/>
-                    <FlatList
-                        vertical
-                        pagingEnabled
-                        scrollEnabled
-                        showsHorizontalScrollIndicator={false}
-                        decelerationRate={0}
-                        scrollEventThrottle={16}
-                        keyExtractor={(item, index) => `${item.id}`}
-                        data={this.props.post.feed}
-                        renderItem={({ item, index }) => this.renderPost(item, index)}
-                    >
-                    </FlatList>
-                </Block>
+            <Block style={styles.login}>
+                <Block flex={false} row center space="between"/>
+                <FlatList
+                    vertical
+                    pagingEnabled
+                    scrollEnabled
+                    showsHorizontalScrollIndicator={false}
+                    decelerationRate={0}
+                    scrollEventThrottle={16}
+                    keyExtractor={(item, index) => `${item.id}`}
+                    data={this.props.post.feed}
+                    renderItem={({ item, index }) => this.renderPost(item, index)}
+                >
+                </FlatList>
+            </Block>
         );
     }
     renderPost = (item, index) => {
         return (
             <TouchableOpacity activeOpacity={0.8} onPress={() => {}}>
-                <Card style={{marginHorizontal:theme.sizes.horizontal}} color={theme.colors.secondBlack}>
-                    <Text style={{ color: theme.colors.black, fontWeight: 'bold' }}>{item.description}</Text>
-                    <Text>{item.description}</Text>
+                <Card style={{marginHorizontal:theme.sizes.horizontal,flex: 0}} color={theme.colors.secondBlack}>
+                    <Image style={[styles.avatar, styles.shadow]} source={{ uri: 'https://lastfm-img2.akamaized.net/i/u/270x205/a006d64e88fbcf8576957b2dbe7065d6.jpg' }} />
+                    <Text style={{ color: theme.colors.black, fontWeight: 'bold',paddingLeft:theme.sizes.base * 3 }}>{item.description}</Text>
+                    <Text style={{ paddingLeft:theme.sizes.base * 3 }}>{item.description}</Text>
                 </Card>
             </TouchableOpacity>
         )
