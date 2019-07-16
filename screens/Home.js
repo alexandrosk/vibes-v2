@@ -31,7 +31,7 @@ class Home extends React.Component {
                     showsHorizontalScrollIndicator={false}
                     decelerationRate={0}
                     scrollEventThrottle={16}
-                    keyExtractor={(item, index) => `${item.id}`}
+                    keyExtractor={(item, index) => `${index}`}
                     data={this.props.post.feed}
                     renderItem={({ item, index }) => this.renderPost(item, index)}
                 >

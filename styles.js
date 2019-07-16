@@ -7,7 +7,7 @@ export default styles = StyleSheet.create({
         //backgroundColor: '#2c2c2e',
         //backgroundColor: '#19191a',
         //backgroundColor: '#030303',
-        backgroundColor: '#15191c'
+        backgroundColor: theme.colors.black
     },
     mainApp: {
         marginTop:theme.sizes.base * 2,
