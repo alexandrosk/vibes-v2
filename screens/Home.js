@@ -4,6 +4,8 @@ import styles from '../styles';
 import { Button, Block, Text, Card } from '../components';
 import {theme} from '../constants';
 
+import {Ionicons} from '@expo/vector-icons';
+
 import {SafeAreaView} from 'react-navigation';
 
 import { bindActionCreators } from 'redux';
@@ -42,10 +44,21 @@ class Home extends React.Component {
     renderPost = (item, index) => {
         return (
             <TouchableOpacity activeOpacity={0.8} onPress={() => {}}>
-                <Card style={{marginHorizontal:theme.sizes.horizontal,flex: 0}} color={theme.colors.secondBlack}>
-                    <Image style={[styles.avatar, styles.shadow]} source={{ uri: 'https://lastfm-img2.akamaized.net/i/u/270x205/a006d64e88fbcf8576957b2dbe7065d6.jpg' }} />
-                    <Text style={{ color: theme.colors.black, fontWeight: 'bold',paddingLeft:theme.sizes.base * 3 }}>{item.description}</Text>
-                    <Text style={{ paddingLeft:theme.sizes.base * 3 }}>{item.description}</Text>
+                <Card color={theme.colors.secondBlack} style={{marginHorizontal:theme.sizes.horizontal}}>
+                    <Block style={[styles.flexRow,styles.center]}>
+                        <Block style={[styles.flexRow,styles.center]}>
+                            <Image style={[styles.avatar, styles.shadow]} source={{ uri: item.photo }} />
+                            <Text style={{ color: theme.colors.gray, fontWeight: 'bold',paddingLeft: theme.sizes.padding/2 }}>{item.username}</Text>
+                        </Block>
+                        <Ionicons style={{ color: theme.colors.gray, paddingVertical: theme.sizes.horizontal }} name='ios-flag' size={20}/>
+                    </Block>
+                    <Text style={{flexDirection:'row' }}>{item.description}</Text>
+                    <Block style={{borderBottomColor: theme.colors.gray2, borderBottomWidth: 0.5, marginVertical: 15}}/>
+                    <Block style={[styles.flexRow]}>
+                        <Ionicons style={{ color: theme.colors.gray, padding: theme.sizes.horizontalHalf,paddingLeft: 0 }} name='ios-heart-empty' size={20}/>
+                        <Ionicons style={{ color: theme.colors.gray, padding: theme.sizes.horizontalHalf }} name='ios-chatbubbles' size={20}/>
+                        <Ionicons style={{ color: theme.colors.gray, padding: theme.sizes.horizontalHalf }} name='ios-send' size={20}/>
+                    </Block>
                 </Card>
             </TouchableOpacity>
         )

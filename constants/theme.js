@@ -19,6 +19,7 @@ const sizes = {
 
     //spacing
     horizontal: 10,
+    horizontalHalf:  5,
 
     // font sizes
     h1: 26,

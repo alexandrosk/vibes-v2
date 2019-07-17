@@ -21,6 +21,14 @@ export default styles = StyleSheet.create({
     text: {
         color: '#fff',
     },
+    center: {
+        alignItems: 'center',
+        justifyContent: 'space-between',
+    },
+    flexRow: {
+        flexDirection: 'row',
+        flex: 0
+    },
     marginHeader: {
         marginTop: theme.sizes.base * 2,
     },
@@ -82,12 +90,9 @@ export default styles = StyleSheet.create({
         borderBottomColor: theme.colors.accent,
     },
     avatar: {
-        position: 'absolute',
-        top: theme.sizes.base,
-        left: theme.sizes.base,
         width: theme.sizes.base * 2,
         height: theme.sizes.base * 2,
-        borderRadius: theme.sizes.radius,
+        borderRadius: 15,
     },
     shadow: {
         shadowColor: theme.colors.black,
