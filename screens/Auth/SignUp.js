@@ -28,7 +28,7 @@ class SignUp extends React.Component {
         const hasErrors = key => errors.includes(key) ? styles.hasErrors : null;
         return (
             <KeyboardAvoidingView style={styles.login} behavior="padding">
-                <Block padding={[0, theme.sizes.base * 2]}>
+                <Block padding={[0, theme.sizes.base * 3]}>
                     <Text h1 bold>Sign Up to the <UniverseIcon/></Text>
                     <Block middle>
                         <Input
@@ -41,7 +41,7 @@ class SignUp extends React.Component {
                         <Input
                             label="Username"
                             style={[styles.input, hasErrors('username')]}
-                            value={this.props.user.email}
+                            value={this.props.user.username}
                             onChangeText={input => this.props.updateUsername(input)}
                         />
                         <Input
@@ -52,8 +52,14 @@ class SignUp extends React.Component {
                             value={this.props.user.password}
                             onChangeText={input => this.props.updatePassword(input)}
                         />
-                        <Input
+                        {/*<Input
                             label="Bio"
+                            style={[styles.input, hasErrors('bio')]}
+                            value={this.props.user.bio}
+                            onChangeText={input => this.props.updateBio(input)}
+                        />*/}
+                        <Input
+                            label="Country"
                             style={[styles.input, hasErrors('bio')]}
                             value={this.props.user.bio}
                             onChangeText={input => this.props.updateBio(input)}

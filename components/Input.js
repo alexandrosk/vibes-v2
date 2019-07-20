@@ -96,6 +96,7 @@ export default class Input extends Component {
           autoCapitalize="none"
           autoCorrect={false}
           keyboardType={inputType}
+          keyboardAppearance={'dark'}
           {...props}
         />
         {this.renderToggle()}

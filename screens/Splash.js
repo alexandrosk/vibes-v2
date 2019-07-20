@@ -1,10 +1,11 @@
 import React from 'react';
-import {StatusBar, Text, View} from 'react-native';
+import {StatusBar, Text, View,ActivityIndicator} from 'react-native';
 import styles from '../styles';
 import {connect} from "react-redux";
 import {getUser} from "../actions/user";
 import {bindActionCreators} from 'redux';
 import firebase from 'firebase';
+import {theme} from '../constants';
 
 
 class Splash extends React.Component {
@@ -29,9 +30,10 @@ class Splash extends React.Component {
 
     render() {
         return (
-            <View style={styles.login}>
+            <View style={[styles.containerFlex,styles.Horizontal]}>
                 <StatusBar barStyle="light-content" />
-                <Text style={styles.text}>Loading</Text>
+                <Text style={[styles.text,styles.Horizontal]}>Almost there...</Text>
+                <ActivityIndicator size="large" color={theme.colors.primary} />
             </View>
         );
     }

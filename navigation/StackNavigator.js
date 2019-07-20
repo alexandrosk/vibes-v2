@@ -7,7 +7,7 @@ import HomeScreen from '../screens/Home';
 import SearchScreen from '../screens/Search';
 import Post from '../screens/Post';
 import Activity from '../screens/Activity';
-import Profile from '../screens/Profile';
+import ProfileScreen from '../screens/Profile';
 
 import {createStackNavigator, createAppContainer} from 'react-navigation';
 
@@ -32,6 +32,7 @@ export const HomeNavigator = createStackNavigator({
                 borderBottomColor: "transparent",
                 elevation: 0, // for android
             },
+            headerTintColor: theme.colors.white,
             headerBackImage: <BackIcon/>
         }
     }
@@ -54,6 +55,29 @@ export const SearchNavigator = createStackNavigator({
                 borderBottomColor: "transparent",
                 elevation: 0, // for android
             },
+            headerTintColor: theme.colors.white,
+            headerBackImage: <BackIcon/>
+        }
+    }
+);
+
+export const ProfileNavigator = createStackNavigator({
+
+        Search: {
+            screen: ProfileScreen,
+            navigationOptions: {
+                title: 'Profile',
+            },
+        }
+    },
+    {
+        defaultNavigationOptions: {
+            headerStyle: {
+                backgroundColor: theme.colors.black,
+                borderBottomColor: "transparent",
+                elevation: 0, // for android
+            },
+            headerTintColor: theme.colors.white,
             headerBackImage: <BackIcon/>
         }
     }

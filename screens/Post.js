@@ -1,27 +1,67 @@
 import React from 'react';
-import {Text, TextInput, View, Image, TouchableOpacity, Button} from 'react-native';
+import {View, TouchableOpacity} from 'react-native';
 import styles from '../styles';
+
+import { KeyboardAvoidingView,Keyboard} from 'react-native';
+import { Button, Block, Input, Text } from '../components';
+import {theme} from '../constants';
+import UniverseIcon from '../icons/universe';
+
 import {updateDescription,uploadPost} from "../actions/post";
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
 
 class Post extends React.Component {
+    state = {
+        isKeyboardFocus:false
+    };
+
+    keyboardFocus = () => {
+        this.setState({isKeyboardFocus : true});
+    };
+
+    uploadPost = () => {
+        Keyboard.dismiss();
+        this.props.uploadPost();
+    };
     render() {
         return (
-            <View style={styles.container}>
-                <Text>Post</Text>
-                <TextInput placeholderTextColor="#D7DEDC"
-                           value={this.props.post.description}
-                           style={styles.textInput}
-                           onChangeText={input => this.props.updateDescription(input)}
-                           placeholder='Share your vibes..'/>
-                           <Image style={styles.postPhoto} source={{uri: 'https://firebasestorage.googleapis.com/v0/b/vibes-936f2.appspot.com/o/11342_1514657652171064_2933594812106856275_n.jpg?alt=media&token=e3ca247f-7ea1-4671-9015-94daecc1756d'}}/>
-                <TouchableOpacity  style={styles.button} onPress={() => this.props.uploadPost()}>
-                    <Text style={styles.text}>Share</Text>
-                </TouchableOpacity>
-            </View>
+            <KeyboardAvoidingView style={styles.login} behavior="padding">
+                <Text h1 bold style={{paddingVertical: theme.sizes.base * 3}}>Ready to share? </Text>
+                <Block middle style={{marginHorizontal:theme.sizes.horizontal}}>
+                    {this.renderCloseKeyboard()}
+                    <Input
+                        multiline = {true}
+                        placeholder="Start typing.."
+                        placeholderTextColor={theme.colors.white}
+                        style={[styles.textarea]}
+                        value={this.props.post.description}
+                        onFocus={() => this.keyboardFocus()}
+                        onChangeText={input => this.props.updateDescription(input)}
+                    />
+
+
+                    <Button gradient onPress={() => this.uploadPost()}>
+                            <Text bold white center>SHARE NOW</Text>
+                    </Button>
+                </Block>
+            </KeyboardAvoidingView>
         );
     }
+    renderCloseKeyboard() {
+        if (this.state.isKeyboardFocus) {
+            return (
+                <Block>
+                    <Text>
+                        Close Keyboard
+                    </Text>
+                </Block>
+            )
+        } else {
+            return null;
+        }
+    }
+
 }
 
 const mapDispatchToProps = (dispatch) => {

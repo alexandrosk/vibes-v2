@@ -2,10 +2,10 @@ import React from 'react';
 
 import Post from '../screens/Post';
 import Activity from '../screens/Activity';
-import Profile from '../screens/Profile';
+
 import style from '../styles';
 
-import {HomeNavigator, SearchNavigator} from './StackNavigator';
+import {HomeNavigator, SearchNavigator, ProfileNavigator} from './StackNavigator';
 
 import SearchIcon from '../icons/search'
 import HeartIcon from '../icons/heart'
@@ -59,7 +59,7 @@ const TabNavigator = createBottomTabNavigator({
             }
         },
         Profile: {
-            screen: Profile,
+            screen: ProfileNavigator,
             navigationOptions: {
                 tabBarLabel: ' ',
                 title: 'Profile',

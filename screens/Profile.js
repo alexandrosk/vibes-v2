@@ -1,6 +1,6 @@
 import React from 'react';
 import {Button, Block, Text} from '../components';
-import {Image} from 'react-native';
+import {Image,View} from 'react-native';
 import {theme} from '../constants';
 import styles from '../styles';
 
@@ -13,26 +13,80 @@ class Profile extends React.Component {
 
     render() {
         return (
-            <Block>
-                <Block flex={false} row center space="between" style={styles.marginHeader}>
-                    <Text bold h1>Profile</Text>
-                </Block>
-                <Block flex={false} middle>
-                    <Image
-                        style={{width: 50, height: 50}}
-                        source={{uri: this.props.user.photo}}
-                    />
-                    <Text style={styles.text}>{this.props.user.email}</Text>
-                    <Text style={styles.text}>{this.props.user.username}</Text>
-                    <Text style={styles.text}>{this.props.user.bio}</Text>
-                    <Button shadow title="Logout" onPress={() => firebase.auth().signOut()}>
-                        <Text black bold center>
-                            SIGN OUT
-                        </Text>
-                    </Button>
-                </Block>
-            </Block>
+            <Block style={styles.container}>
+                <View style={{ flexDirection: 'row' }}>
 
+                    {/**User photo takes 1/3rd of view horizontally **/}
+                    <View
+                        style={{ flex: 1, alignItems: 'center', justifyContent: 'flex-start' }}>
+                        <Image
+                            style={{ width: 60, height: 60, borderRadius: 30 }}
+                            source={{uri: this.props.user.photo}}
+                        />
+                    </View>
+
+                    {/**User Stats take 2/3rd of view horizontally **/}
+                    <View style={{ flex: 3 }}>
+
+                        {/** Stats **/}
+                        <View
+                            style={{
+                                flexDirection: 'row',
+                                justifyContent: 'space-around',
+                                alignItems: 'flex-end'
+                            }}>
+                            <View style={{ alignItems: 'center' }}>
+                                <Text>20</Text>
+                                <Text style={{ fontSize: 10, color: 'grey' }}>Posts</Text>
+                            </View>
+                            <View style={{ alignItems: 'center' }}>
+                                <Text>205</Text>
+                                <Text style={{ fontSize: 10, color: 'grey' }}>Followers</Text>
+                            </View>
+                            <View style={{ alignItems: 'center' }}>
+                                <Text>167</Text>
+                                <Text style={{ fontSize: 10, color: 'grey' }}>Following</Text>
+                            </View>
+                        </View>
+
+                        {/**Edit profile and Settings Buttons **/}
+                        <View style={{ flexDirection: 'row', alignItems: 'flex-start', paddingTop: 10 }}>
+
+                            <View
+                                style={{ flexDirection: 'row' }}>
+
+                                {/** Edit profile takes up 3/4th **/}
+                                <Button bordered
+                                        style={{ flex: 3, marginLeft: 10, justifyContent: 'center', height: 30 }}><Text center black>Edit Profile</Text></Button>
+
+
+                                {/** Settings takes up  1/4th place **/}
+                                <Button bordered dark style={{
+                                    flex: 1,
+                                    height: 30,
+                                    marginRight: 10, marginLeft: 5,
+                                    justifyContent: 'center'
+                                }}>
+                                    <Text center black>+</Text>
+                                   </Button>
+                            </View>
+                        </View>{/**End edit profile**/}
+                    </View>
+                </View>
+
+                <View style={{ paddingBottom: 10 }}>
+                    <View style={{ paddingHorizontal: 10 }}>
+                        <Text style={{ fontWeight: 'bold' }}>@{this.props.user.username}</Text>
+                        <Text>{this.props.user.bio}</Text>
+                        <Text>www.unsureprogrammer.com</Text>
+                        <Button shadow title="Logout" onPress={() => firebase.auth().signOut()}>
+                            <Text black bold center>
+                                SIGN OUT
+                            </Text>
+                        </Button>
+                    </View>
+                </View>
+            </Block>
         );
     }
 }

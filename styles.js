@@ -12,6 +12,19 @@ export default styles = StyleSheet.create({
     mainApp: {
         marginTop:theme.sizes.base * 2,
     },
+    containerFlex: {
+        flex: 1,
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+    horizontal: {
+        flexDirection: 'row',
+        justifyContent: 'space-around'
+    },
+    paddingVertical: {
+        paddingVertical: theme.sizes.paddingVertical
+    },
     //light blue #D7DEDC
     //dynato blue #19647E
     //light green #28AFB0
@@ -49,6 +62,13 @@ export default styles = StyleSheet.create({
         fontSize: 16,
         borderColor: '#DDCECD',
         borderBottomWidth: 1,
+        textAlign: 'left',
+    },
+    textarea: {
+        color: '#fff',
+        width: '100%',
+        height: '80%',
+        fontSize: 16,
         textAlign: 'left',
     },
     tabBarStyling: {
