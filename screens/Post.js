@@ -13,26 +13,33 @@ import {connect} from "react-redux";
 
 class Post extends React.Component {
     state = {
-        isKeyboardFocus:false
+        isKeyboardFocus: false
     };
 
     keyboardFocus = () => {
-        this.setState({isKeyboardFocus : true});
+        this.setState({isKeyboardFocus: true});
     };
 
     uploadPost = () => {
         Keyboard.dismiss();
         this.props.uploadPost();
+        this.props.updateDescription('');
+        this.props.navigation.navigate('Home');
     };
+    closeKeyboard = () => {
+        Keyboard.dismiss();
+        this.setState({isKeyboardFocus: false});
+    };
+
     render() {
         return (
             <KeyboardAvoidingView style={styles.login} behavior="padding">
-                <Text h1 bold style={{paddingVertical: theme.sizes.base * 3}}>Ready to share? </Text>
+                <Text h1 bold style={{paddingVertical: theme.sizes.base * 3}}>Ready to share?</Text>
                 <Block middle style={{marginHorizontal:theme.sizes.horizontal}}>
                     {this.renderCloseKeyboard()}
                     <Input
                         multiline = {true}
-                        placeholder="Start typing.."
+                        placeholder="Type here, thoughts to pixels.."
                         placeholderTextColor={theme.colors.white}
                         style={[styles.textarea]}
                         value={this.props.post.description}
@@ -51,11 +58,9 @@ class Post extends React.Component {
     renderCloseKeyboard() {
         if (this.state.isKeyboardFocus) {
             return (
-                <Block>
-                    <Text>
-                        Close Keyboard
-                    </Text>
-                </Block>
+                <TouchableOpacity onPress={() => this.closeKeyboard()}>
+                    <Text>Dismiss</Text>
+                </TouchableOpacity>
             )
         } else {
             return null;
