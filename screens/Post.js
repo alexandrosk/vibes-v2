@@ -34,12 +34,12 @@ class Post extends React.Component {
     render() {
         return (
             <KeyboardAvoidingView style={styles.login} behavior="padding">
-                <Text h1 bold style={{paddingVertical: theme.sizes.base * 3}}>Ready to share?</Text>
+                <Text h1 bold style={{paddingVertical: theme.sizes.base * 3}}>Thoughts to pixels</Text>
                 <Block middle style={{marginHorizontal:theme.sizes.horizontal}}>
                     {this.renderCloseKeyboard()}
                     <Input
                         multiline = {true}
-                        placeholder="Type here, thoughts to pixels.."
+                        placeholder="Type here//"
                         placeholderTextColor={theme.colors.white}
                         style={[styles.textarea]}
                         value={this.props.post.description}
