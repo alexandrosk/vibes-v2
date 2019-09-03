@@ -11,12 +11,27 @@ import {SafeAreaView} from 'react-navigation';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { getHomeFeed } from '../actions/post';
-import firebase from 'firebase';
 
 class Home extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            isLoading: true,
+            refreshing: false
+        }
+    }
     componentDidMount() {
         this.props.getHomeFeed();
     }
+
+    handleRefresh = () => {
+        this.setState({
+            refreshing: true,
+        }, () => {
+            alert('ALL GOOD YO');
+            this.setState({refreshing: false});
+        })
+    };
 
     render() {
         if(this.props.post === null) return (
@@ -28,11 +43,11 @@ class Home extends React.Component {
                 <Block flex={false} row center space="between"/>
                 <FlatList
                     vertical
-                    pagingEnabled
                     scrollEnabled
                     showsHorizontalScrollIndicator={false}
-                    decelerationRate={0}
-                    scrollEventThrottle={16}
+                    decelerationRate={'normal'}
+                    onRefresh={this.handleRefresh}
+                    refreshing={this.state.refreshing}
                     keyExtractor={(item, index) => `${index}`}
                     data={this.props.post.feed}
                     renderItem={({ item, index }) => this.renderPost(item, index)}

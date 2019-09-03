@@ -9,6 +9,7 @@ import SearchScreen from '../screens/Search';
 import Post from '../screens/Post';
 import Activity from '../screens/Activity';
 import ProfileScreen from '../screens/Profile';
+import MessagesScreen from '../screens/Messages/List';
 
 
 import {createStackNavigator, createAppContainer} from 'react-navigation';
@@ -22,12 +23,19 @@ export const HomeNavigator = createStackNavigator({
 
         Home: {
             screen: HomeScreen,
-            navigationOptions: {
+            navigationOptions: ({ navigation }) => ({
                 headerTitle: 'v o i d',
                 headerTintColor: '#fff',
-                headerRight: <TouchableOpacity><Envelope style={{marginRight:10,opacity:0.8}}/></TouchableOpacity>
-            },
+                headerRight: (
+                    <TouchableOpacity onPress={() => navigation.navigate('Messages')}>
+                        <Envelope style={{marginRight:10,opacity:0.8}}/>
+                    </TouchableOpacity>
+                ),
+            }),
         },
+        Messages: {
+            screen: MessagesScreen
+        }
     },
     {
         defaultNavigationOptions: {

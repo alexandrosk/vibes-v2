@@ -1,5 +1,9 @@
 import React from 'react';
-import {View, TouchableOpacity} from 'react-native';
+import {View, TouchableOpacity, Image} from 'react-native';
+import * as ImagePicker from 'expo-image-picker';
+import * as Permissions from 'expo-permissions';
+import Constants from 'expo-constants';
+
 import styles from '../styles';
 
 import { KeyboardAvoidingView,Keyboard} from 'react-native';
@@ -13,6 +17,7 @@ import {connect} from "react-redux";
 
 class Post extends React.Component {
     state = {
+        image: null,
         isKeyboardFocus: false
     };
 
@@ -31,6 +36,30 @@ class Post extends React.Component {
         this.setState({isKeyboardFocus: false});
     };
 
+    async componentDidMount() {
+        if (Constants.platform.ios) {
+            const { status } = await Permissions.askAsync(Permissions.CAMERA_ROLL);
+            if (status !== 'granted') {
+                alert('Sorry, we need camera roll permissions to make this work!');
+            }
+        }
+    }
+
+
+    _pickImage = async () => {
+        let result = await ImagePicker.launchImageLibraryAsync({
+            mediaTypes: ImagePicker.MediaTypeOptions.All,
+            allowsEditing: true,
+            aspect: [4, 3],
+        });
+
+        console.log(result);
+
+        if (!result.cancelled) {
+            this.setState({ image: result.uri });
+        }
+    };
+
     render() {
         return (
             <KeyboardAvoidingView style={styles.login} behavior="padding">
@@ -46,7 +75,12 @@ class Post extends React.Component {
                         onFocus={() => this.keyboardFocus()}
                         onChangeText={input => this.props.updateDescription(input)}
                     />
-
+                    <Button bordered dark
+                        title="Add an Image"
+                        onPress={this._pickImage}
+                    />
+                    {this.state.image &&
+                    <Image source={{ uri: this.state.image }} style={{ width: 200, height: 200 }} />}
 
                     <Button gradient onPress={() => this.uploadPost()}>
                             <Text bold white center>SHARE NOW</Text>
