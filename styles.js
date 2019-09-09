@@ -67,7 +67,7 @@ export default styles = StyleSheet.create({
     textarea: {
         color: '#fff',
         width: '100%',
-        height: '80%',
+        height: '70%',
         fontSize: 16,
         textAlign: 'left',
     },

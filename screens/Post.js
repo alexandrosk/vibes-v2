@@ -11,9 +11,11 @@ import { Button, Block, Input, Text } from '../components';
 import {theme} from '../constants';
 import UniverseIcon from '../icons/universe';
 
-import {updateDescription,uploadPost} from "../actions/post";
+import {uploadPhoto} from "../actions";
+import {updateDescription,uploadPost,getHomeFeed} from "../actions/post";
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
+import * as ImageManipulator from "expo-image-manipulator";
 
 class Post extends React.Component {
     state = {
@@ -29,6 +31,7 @@ class Post extends React.Component {
         Keyboard.dismiss();
         this.props.uploadPost();
         this.props.updateDescription('');
+        this.props.getHomeFeed();
         this.props.navigation.navigate('Home');
     };
     closeKeyboard = () => {
@@ -53,22 +56,26 @@ class Post extends React.Component {
             aspect: [4, 3],
         });
 
+
         console.log(result);
 
         if (!result.cancelled) {
             this.setState({ image: result.uri });
+            const resize = await ImageManipulator.manipulateAsync(result.uri, [], {compress: 0.1, format: 'jpeg',});
+            const url = await this.props.uploadPhoto(resize);
+            console.log(url);
         }
     };
 
     render() {
         return (
             <KeyboardAvoidingView style={styles.login} behavior="padding">
-                <Text h1 bold style={{paddingVertical: theme.sizes.base * 3}}>Thoughts to pixels</Text>
+                <Text h1 bold style={{paddingVertical: theme.sizes.base * 3}}>Thoughts to p i x e l s</Text>
                 <Block middle style={{marginHorizontal:theme.sizes.horizontal}}>
                     {this.renderCloseKeyboard()}
                     <Input
                         multiline = {true}
-                        placeholder="Type here//"
+                        placeholder="..."
                         placeholderTextColor={theme.colors.white}
                         style={[styles.textarea]}
                         value={this.props.post.description}
@@ -80,10 +87,10 @@ class Post extends React.Component {
                         onPress={this._pickImage}
                     />
                     {this.state.image &&
-                    <Image source={{ uri: this.state.image }} style={{ width: 200, height: 200 }} />}
+                    <Image source={{ uri: this.state.image }} style={{ width: 50, height: 50}} />}
 
                     <Button gradient onPress={() => this.uploadPost()}>
-                            <Text bold white center>SHARE NOW</Text>
+                            <Text bold white center>SHARE YOUR VIBES</Text>
                     </Button>
                 </Block>
             </KeyboardAvoidingView>
@@ -106,7 +113,9 @@ class Post extends React.Component {
 const mapDispatchToProps = (dispatch) => {
     return bindActionCreators({
         updateDescription,
-        uploadPost
+        uploadPost,
+        uploadPhoto,
+        getHomeFeed
     }, dispatch)
 };
 

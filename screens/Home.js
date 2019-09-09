@@ -10,7 +10,7 @@ import {SafeAreaView} from 'react-navigation';
 
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { getHomeFeed } from '../actions/post';
+import { getHomeFeed, likePost, unlikePost } from '../actions/post';
 
 class Home extends React.Component {
     constructor(props) {
@@ -29,9 +29,19 @@ class Home extends React.Component {
             refreshing: true,
         }, () => {
             alert('ALL GOOD YO');
+            this.props.getHomeFeed();
             this.setState({refreshing: false});
         })
     };
+
+    likePost = (post) => {
+        const {uid} = this.props.user;
+        if (post.likes.includes(uid)){
+            this.props.unlikePost(post);
+        } else {
+            this.props.likePost(post);
+        }
+    }
 
     render() {
         if(this.props.post === null) return (
@@ -70,7 +80,7 @@ class Home extends React.Component {
                     <Text style={{flexDirection:'row' }}>{item.description}</Text>
                     <Block style={{borderBottomColor: theme.colors.gray2, borderBottomWidth: 0.5, marginVertical: 15}}/>
                     <Block style={[styles.flexRow]}>
-                        <Ionicons style={{ color: theme.colors.gray, padding: theme.sizes.horizontalHalf,paddingLeft: 0 }} name='ios-heart-empty' size={20}/>
+                        <TouchableOpacity onPress={ () => this.likePost(item)}><Ionicons style={{ color: theme.colors.gray, padding: theme.sizes.horizontalHalf,paddingLeft: 0 }} name='ios-heart-empty' size={20}/></TouchableOpacity>
                         <Ionicons style={{ color: theme.colors.gray, padding: theme.sizes.horizontalHalf }} name='ios-chatbubbles' size={20}/>
                         <Ionicons style={{ color: theme.colors.gray, padding: theme.sizes.horizontalHalf }} name='ios-send' size={20}/>
                     </Block>
@@ -81,7 +91,9 @@ class Home extends React.Component {
 }
 const mapDispatchToProps = (dispatch) => {
     return bindActionCreators({
-        getHomeFeed
+        getHomeFeed,
+        likePost,
+        unlikePost
     }, dispatch)
 };
 

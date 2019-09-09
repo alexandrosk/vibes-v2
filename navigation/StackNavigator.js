@@ -24,7 +24,7 @@ export const HomeNavigator = createStackNavigator({
         Home: {
             screen: HomeScreen,
             navigationOptions: ({ navigation }) => ({
-                headerTitle: 'v o i d',
+                headerTitle: 'v i b e s',
                 headerTintColor: '#fff',
                 headerRight: (
                     <TouchableOpacity onPress={() => navigation.navigate('Messages')}>
