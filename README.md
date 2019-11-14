@@ -25,13 +25,13 @@ Instructions are shown in the terminal. You can select to open it in:
 
 -----
 
-###Motivation
+### Motivation
 ```
 https://www.youtube.com/watch?v=fTjm59DFifg
 https://www.producthunt.com/r/f6752a1770cad1
 https://play.google.com/store/apps/details?id=com.synergetechsolutions.nearbylive&hl=en
 ```
-###Design
+### Design
 ```
 https://developer.apple.com/design/human-interface-guidelines/macos/visual-design/dark-mode/
 https://material.io/design/color/dark-theme.html#custom-application
@@ -40,7 +40,7 @@ Colors : https://coolors.co/444c5c-2d3139-1e1f21-7678ed-f7b801
 
 Dark theme: https://cdn.dribbble.com/users/93108/screenshots/5528348/instagram_dark_mode.png
 ```
-###Colors
+### Colors
 ```
 black bg : #0b0f18
 ```
